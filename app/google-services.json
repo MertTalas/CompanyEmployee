@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "274130386640",
+    "firebase_url": "https://companyemployee-e17b4-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "companyemployee-e17b4",
+    "storage_bucket": "companyemployee-e17b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274130386640:android:b35caf40dfdadf80dc28d5",
+        "android_client_info": {
+          "package_name": "com.impostors.companyemployee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274130386640-0d7plld0l3n8k81rv1t6a64ms1q89ge4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeXOIn7ZvdxYiuOVIHi97MlQlPUDZ4hbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274130386640-0d7plld0l3n8k81rv1t6a64ms1q89ge4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/editTextTextEmployeeName"
+        android:layout_width="168dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Employee name..."
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextEmployeePhone"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextEmployeePhone"
+        android:layout_width="168dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Employee phone number"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextEmployeeName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextEmployeeEmail"
+        android:layout_width="168dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Employee e-mail"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextEmployeePosition"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmployeeName" />
+
+    <EditText
+        android:id="@+id/editTextTextEmployeePosition"
+        android:layout_width="168dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="Employee position"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextEmployeeEmail"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmployeePhone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
