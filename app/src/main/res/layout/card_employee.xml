@@ -15,9 +15,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/blue"
+            android:background="@color/lightblue"
             android:fadingEdge="vertical">
 
+            <EditText
+                android:id="@+id/editTextLine"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/open_sans"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/employeeName"
