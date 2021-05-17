@@ -32,6 +32,7 @@ public class MainPageActivity extends AppCompatActivity {
     Button btnAddEmployee;
     RecyclerView recyclerView;
     EmployeeAdapter adapter;
+    Button btnEditEmployee;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -44,6 +45,7 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         btnAddEmployee=findViewById(R.id.btnAddEmployee);
         recyclerView=findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -51,6 +53,7 @@ public class MainPageActivity extends AppCompatActivity {
         firebaseUser = auth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("company");
+
 
 
         btnAddEmployee.setOnClickListener(new View.OnClickListener() {
