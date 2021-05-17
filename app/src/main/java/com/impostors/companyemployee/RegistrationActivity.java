@@ -80,12 +80,12 @@ public class RegistrationActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 firebaseUser = auth.getCurrentUser();
-                                String user_id = firebaseUser.getUid();
+                                String company_id = firebaseUser.getUid();
 
                                 databaseReference = FirebaseDatabase.getInstance().getReference();
 
-                                Company user = new Company(email, name, phoneNumber, user_id);
-                                databaseReference.child("company").child(company_id).setValue(user);
+                                Company company = new Company(email, name, phoneNumber, company_id);
+                                databaseReference.child("company").child(company_id).setValue(company);
 
                                 progressDialog.dismiss();
                                 Intent to_main_intent = new Intent(RegistrationActivity.this, MainPageActivity.class);
