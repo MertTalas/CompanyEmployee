@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -32,7 +33,7 @@ public class MainPageActivity extends AppCompatActivity {
     Button btnAddEmployee;
     RecyclerView recyclerView;
     EmployeeAdapter adapter;
-    Button btnEditEmployee;
+    Button btnLogout;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -47,6 +48,7 @@ public class MainPageActivity extends AppCompatActivity {
 
 
         btnAddEmployee=findViewById(R.id.btnAddEmployee);
+        btnLogout=findViewById(R.id.btnLogout);
         recyclerView=findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         auth = FirebaseAuth.getInstance();
@@ -54,7 +56,12 @@ public class MainPageActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("company");
 
-
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOutClicked();
+            }
+        });
 
         btnAddEmployee.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,5 +129,10 @@ public class MainPageActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+    public void signOutClicked() {
+        FirebaseAuth.getInstance().signOut();
+        Intent logout = new Intent(MainPageActivity.this, LoginActivity.class);
+        startActivity(logout);
     }
 }
