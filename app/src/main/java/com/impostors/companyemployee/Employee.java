@@ -5,14 +5,24 @@ public class Employee {
     String phoneNumber;
     String position;
     String email;
-    String ssn;
+    String company_id;
 
-    public Employee(String name, String phoneNumber, String role, String email,String ssn) {
+    public Employee() {
+    }
+
+    public Employee(String name, String phoneNumber, String position, String email) {
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.position = role;
+        this.position = position;
         this.email = email;
-        this.ssn=ssn;
+    }
+
+    public String getCompany_id() {
+        return company_id;
+    }
+
+    public void setCompany_id(String company_id) {
+        this.company_id = company_id;
     }
 
     public String getPosition() {
@@ -21,14 +31,6 @@ public class Employee {
 
     public void setPosition(String position) {
         this.position = position;
-    }
-
-    public String getSsn() {
-        return ssn;
-    }
-
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
     }
 
     public String getName() {
@@ -45,14 +47,6 @@ public class Employee {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getRole() {
-        return position;
-    }
-
-    public void setRole(String role) {
-        this.position = role;
     }
 
     public String getEmail() {

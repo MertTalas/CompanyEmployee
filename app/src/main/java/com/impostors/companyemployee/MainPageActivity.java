@@ -2,6 +2,8 @@ package com.impostors.companyemployee;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,10 +11,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,17 +30,27 @@ import java.util.concurrent.ExecutionException;
 
 public class MainPageActivity extends AppCompatActivity {
     Button btnAddEmployee;
+    RecyclerView recyclerView;
+    EmployeeAdapter adapter;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     FirebaseAuth auth;
     FirebaseUser firebaseUser;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         btnAddEmployee=findViewById(R.id.btnAddEmployee);
+        recyclerView=findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        auth = FirebaseAuth.getInstance();
+        firebaseUser = auth.getCurrentUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("company");
 
 
         btnAddEmployee.setOnClickListener(new View.OnClickListener() {
@@ -67,9 +81,9 @@ public class MainPageActivity extends AppCompatActivity {
                             query.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    final Employee employee = new Employee(EmployeeName,EmployeePhone,EmployeePosition,EmployeeEmail);
-
-                                        query.getRef().child(firebaseUser.getUid()).child("employees").push().setValue(employee);
+                                    final Employee employee = new Employee(EmployeeName, EmployeePhone,EmployeePosition,EmployeeEmail);
+                                    employee.setCompany_id(firebaseUser.getUid());
+                                    query.getRef().child(firebaseUser.getUid()).child("employees").push().setValue(employee);
                                 }
 
                                 @Override
@@ -88,5 +102,22 @@ public class MainPageActivity extends AppCompatActivity {
 
             }
         });
+        FirebaseRecyclerOptions<Employee> options =
+                new FirebaseRecyclerOptions.Builder<Employee>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference("company").child(firebaseUser.getUid()).child("employees"), Employee.class)
+                        .build();
+        adapter= new EmployeeAdapter(options);
+        recyclerView.setAdapter(adapter);
+
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }
