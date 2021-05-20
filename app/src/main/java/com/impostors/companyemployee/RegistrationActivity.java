@@ -48,7 +48,7 @@ public class RegistrationActivity extends AppCompatActivity {
     public void init() {
         auth = FirebaseAuth.getInstance();
         firebaseUser = auth.getCurrentUser();
-
+        
         editTextName = findViewById(R.id.editTextRestaurantName);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);

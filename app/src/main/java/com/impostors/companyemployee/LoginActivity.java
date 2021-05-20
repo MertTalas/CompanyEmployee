@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void signInClicked() {
         final String email = editTextEmail.getText().toString();
-        String password = editTextPassword.getText().toString();
+        final String password = editTextPassword.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
             editTextEmail.setError("Email Alanı Boş Olamaz!");
@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
             editTextPassword.setError("Şifre Alanı Boş Olamaz!");
             return;
         }
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
