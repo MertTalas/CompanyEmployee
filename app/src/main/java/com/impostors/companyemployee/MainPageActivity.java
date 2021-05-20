@@ -68,14 +68,14 @@ public class MainPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 View editTextAlert = getLayoutInflater().inflate(R.layout.alert_add_employee, null);
                 AlertDialog.Builder ad = new AlertDialog.Builder(MainPageActivity.this);
-                ad.setMessage("Informations of employees");
-                ad.setTitle("Add new employee");
+                ad.setMessage("Çalışan Bilgileri");
+                ad.setTitle("Yeni çalışan ekle");
                 final EditText InsertedEmployeeName = editTextAlert.findViewById(R.id.editTextTextEmployeeName);
                 final EditText InsertedEmployeePhoneNumber= editTextAlert.findViewById(R.id.editTextTextEmployeePhone);
                 final EditText InsertedEmployeeEmail = editTextAlert.findViewById(R.id.editTextTextEmployeeEmail);
                 final EditText InsertedEmployeePosition = editTextAlert.findViewById(R.id.editTextTextEmployeePosition);
                 ad.setView(editTextAlert);
-                ad.setPositiveButton("Insert", new DialogInterface.OnClickListener() {
+                ad.setPositiveButton("Ekle", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         final String EmployeeName = InsertedEmployeeName.getText().toString();
@@ -103,7 +103,7 @@ public class MainPageActivity extends AppCompatActivity {
                             });
                         }
                     }
-                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                }).setNegativeButton("İptal", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }

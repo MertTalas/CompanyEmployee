@@ -45,18 +45,18 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     String email = editTextForgotPassword.getText().toString();
                     if (TextUtils.isEmpty(email)) {
-                        Toast.makeText(ForgotPasswordActivity.this, "You need to enter a valid Email!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ForgotPasswordActivity.this, "Geçerli bir email girin!", Toast.LENGTH_LONG).show();
                     } else {
                         auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ForgotPasswordActivity.this, "Please check your email!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ForgotPasswordActivity.this, "Posta kutunuzu kontrol edin!", Toast.LENGTH_LONG).show();
                                     Intent forgot_login_intent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
                                     startActivity(forgot_login_intent);
                                 } else {
                                     String message = task.getException().getMessage();
-                                    Toast.makeText(ForgotPasswordActivity.this, "Error occurred : " + message, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ForgotPasswordActivity.this, "Hatalı işlem : " + message, Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
